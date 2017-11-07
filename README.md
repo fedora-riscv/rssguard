@@ -1,3 +1,0 @@
-# rssguard
-
-The rssguard package
