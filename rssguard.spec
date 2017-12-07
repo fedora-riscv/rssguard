@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.5.4
-Release:        3%{?dist}
+Version:        3.5.5
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -39,7 +39,8 @@ rm -rf src/qtsingleapplication
 
 %build
 mkdir build && pushd build
-%{qmake_qt5} ../rssguard.pro -r LRELEASE_EXECUTABLE=lrelease-qt5 PREFIX=%{_prefix}
+lrelease-qt5 ../rssguard.pro
+%{qmake_qt5} ../rssguard.pro -r PREFIX=%{_prefix}
 %make_build
 popd
 
@@ -66,6 +67,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 
 
 %changelog
+* Thu Dec 07 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.5-1
+- Upstream release 3.5.5
+
 * Wed Nov 01 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.4-3
 - Unbundle qtsinglecoreapplication
 - Correct licensing
