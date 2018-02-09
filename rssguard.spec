@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.5.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -67,6 +67,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 
 
 %changelog
+* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Thu Dec 07 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.5-1
 - Upstream release 3.5.5
 
