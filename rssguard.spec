@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.5.5
-Release:        2%{?dist}
+Version:        3.5.6
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -16,6 +16,7 @@ Patch0:         rssguard-3.5.4-unbundle_qtsinglecoreapplication.patch
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
 
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5)
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  qtsingleapplication-qt5-devel
@@ -38,17 +39,15 @@ sed -i 's/\r$//' README.md
 rm -rf src/qtsingleapplication
 
 %build
-mkdir build && pushd build
+mkdir build && cd build
 lrelease-qt5 ../rssguard.pro
 %{qmake_qt5} ../rssguard.pro -r PREFIX=%{_prefix}
 %make_build
-popd
 
 
 %install
-pushd build
+cd build
 %make_install INSTALL_ROOT=%{buildroot}
-popd
 chmod 0755 %{buildroot}/%{_bindir}/%{name}
 
 
@@ -67,6 +66,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 
 
 %changelog
+* Mon Feb 26 2018 Robert-André Mauchin <zebob.m@gmail.com> 3.5.6-1
+- Upstream release 3.5.6
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
