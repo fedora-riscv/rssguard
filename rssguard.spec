@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.5.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -17,7 +17,7 @@ Patch0:         rssguard-3.5.4-unbundle_qtsinglecoreapplication.patch
 ExclusiveArch:  %{qt5_qtwebengine_arches}
 
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(Qt5)
+BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  qt5-linguist
@@ -66,6 +66,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 
 
 %changelog
+* Thu Mar 08 2018 Rex Dieter <rdieter@fedoraproject.org> - 3.5.6-2
+- better Qt dep
+
 * Mon Feb 26 2018 Robert-André Mauchin <zebob.m@gmail.com> 3.5.6-1
 - Upstream release 3.5.6
 
