@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.5.6
-Release:        3%{?dist}
+Version:        3.5.7
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -11,7 +11,7 @@ License:        GPLv3+ and BSD and AGPLv3
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         rssguard-3.5.4-unbundle_qtsinglecoreapplication.patch
+Patch0:         rssguard-3.5.7-unbundle_qtsinglecoreapplication.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -23,10 +23,11 @@ BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  qt5-linguist
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
+Requires:       hicolor-icon-theme
 
 
 %description
-RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed 
+RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed
 using Qt framework which supports online feed synchronization.
 
 
@@ -61,11 +62,14 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %license LICENSE.md
 %{_bindir}/%{name}
 %{_datadir}/applications/com.github.rssguard.desktop
-%{_datadir}/pixmaps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/rssguard.png
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 
 %changelog
+* Thu Apr 04 11:14:04 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.7-1
+- Release 3.5.7
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
