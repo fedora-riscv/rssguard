@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.5.7
+Version:        3.5.8
 Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
@@ -67,6 +67,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 
 
 %changelog
+* Fri May 31 20:03:55 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.8-1
+- Release 3.5.8
+
 * Thu Apr 04 11:14:04 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.7-1
 - Release 3.5.7
 
