@@ -11,7 +11,7 @@ License:        GPLv3+ and BSD and AGPLv3
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         rssguard-3.5.7-unbundle_qtsinglecoreapplication.patch
+Patch0:         rssguard-3.5.9-unbundle_qtsinglecoreapplication.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
