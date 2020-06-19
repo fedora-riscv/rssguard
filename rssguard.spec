@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.5.9
-Release:        3%{?dist}
+Version:        3.6.3
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -11,7 +11,9 @@ License:        GPLv3+ and BSD and AGPLv3
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         rssguard-3.5.9-unbundle_qtsinglecoreapplication.patch
+Patch0:         rssguard-3.6.3-fix_install_path.patch
+Patch1:         rssguard-3.6.3-unbundle_qtsinglecoreapplication.patch
+Patch2:         0001-Fix-238-build.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -25,11 +27,9 @@ BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
 Requires:       hicolor-icon-theme
 
-
 %description
 RSS Guard is simple, light and easy-to-use RSS/ATOM feed aggregator developed
 using Qt framework which supports online feed synchronization.
-
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -41,32 +41,32 @@ rm -rf src/qtsingleapplication
 
 %build
 mkdir build && cd build
-lrelease-qt5 ../rssguard.pro
-%{qmake_qt5} ../rssguard.pro -r PREFIX=%{_prefix}
+lrelease-qt5 ../build.pro
+%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
 %make_build
-
 
 %install
 cd build
 %make_install INSTALL_ROOT=%{buildroot}
 chmod 0755 %{buildroot}/%{_bindir}/%{name}
 
-
 %check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.rssguard.desktop
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.github.rssguard.appdata.xml
-
 
 %files
 %doc README.md
 %license LICENSE.md
 %{_bindir}/%{name}
+%{_libdir}/lib%{name}.so
 %{_datadir}/applications/com.github.rssguard.desktop
 %{_datadir}/icons/hicolor/*/apps/rssguard.png
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
-
 %changelog
+* Fri Jun 19 20:44:52 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-1
+- Update to 3.6.3
+
 * Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.9-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 

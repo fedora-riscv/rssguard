@@ -1,0 +1,60 @@
+diff -up rssguard-3.6.3/pri/install.pri.orig rssguard-3.6.3/pri/install.pri
+--- rssguard-3.6.3/pri/install.pri.orig	2020-06-03 08:35:36.000000000 +0200
++++ rssguard-3.6.3/pri/install.pri	2020-06-19 22:22:17.806565164 +0200
+@@ -113,10 +113,6 @@ INSTALL_HEADERS = \
+ ../librssguard/network-web/urlinterceptor.h \
+ ../librssguard/network-web/webfactory.h \
+ ../librssguard/network-web/webpage.h \
+-../librssguard/qtsingleapplication/qtlocalpeer.h \
+-../librssguard/qtsingleapplication/qtlockedfile.h \
+-../librssguard/qtsingleapplication/qtsingleapplication.h \
+-../librssguard/qtsingleapplication/qtsinglecoreapplication.h \
+ ../librssguard/services/abstract/accountcheckmodel.h \
+ ../librssguard/services/abstract/cacheforserviceroot.h \
+ ../librssguard/services/abstract/category.h \
+diff -up rssguard-3.6.3/src/librssguard/librssguard.pro.orig rssguard-3.6.3/src/librssguard/librssguard.pro
+--- rssguard-3.6.3/src/librssguard/librssguard.pro.orig	2020-06-03 08:35:36.000000000 +0200
++++ rssguard-3.6.3/src/librssguard/librssguard.pro	2020-06-19 22:28:15.497946134 +0200
+@@ -23,7 +23,7 @@ message($$MSG_PREFIX: lrelease executabl
+ include(../../pri/build_opts.pri)
+ 
+ DEFINES *= RSSGUARD_DLLSPEC=Q_DECL_EXPORT
+-CONFIG += unversioned_libname unversioned_soname skip_target_version_ext
++CONFIG += unversioned_libname unversioned_soname skip_target_version_ext qtsingleapplication
+ 
+ RESOURCES += ../../resources/sql.qrc \
+              ../../resources/rssguard.qrc \
+@@ -114,10 +114,6 @@ HEADERS += core/feeddownloader.h \
+            network-web/oauth2service.h \
+            network-web/silentnetworkaccessmanager.h \
+            network-web/webfactory.h \
+-           qtsingleapplication/qtlocalpeer.h \
+-           qtsingleapplication/qtlockedfile.h \
+-           qtsingleapplication/qtsingleapplication.h \
+-           qtsingleapplication/qtsinglecoreapplication.h \
+            services/abstract/accountcheckmodel.h \
+            services/abstract/cacheforserviceroot.h \
+            services/abstract/category.h \
+@@ -254,10 +250,6 @@ SOURCES += core/feeddownloader.cpp \
+            network-web/oauth2service.cpp \
+            network-web/silentnetworkaccessmanager.cpp \
+            network-web/webfactory.cpp \
+-           qtsingleapplication/qtlocalpeer.cpp \
+-           qtsingleapplication/qtlockedfile.cpp \
+-           qtsingleapplication/qtsingleapplication.cpp \
+-           qtsingleapplication/qtsinglecoreapplication.cpp \
+            services/abstract/accountcheckmodel.cpp \
+            services/abstract/cacheforserviceroot.cpp \
+            services/abstract/category.cpp \
+diff -up rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp
+--- rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp.orig	2020-06-03 08:35:36.000000000 +0200
++++ rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp	2020-06-19 22:35:32.574175465 +0200
+@@ -474,8 +474,6 @@ void Application::onAboutToQuit() {
+ 
+   // Now, we can check if application should just quit or restart itself.
+   if (m_shouldRestart) {
+-    finish();
+-    qDebug("Killing local peer connection to allow another instance to start.");
+ 
+     if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
+       qDebug("New application instance was started.");
