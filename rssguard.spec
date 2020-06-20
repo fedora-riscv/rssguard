@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.6.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -48,7 +48,8 @@ lrelease-qt5 ../build.pro
 %install
 cd build
 %make_install INSTALL_ROOT=%{buildroot}
-chmod 0755 %{buildroot}/%{_bindir}/%{name}
+chmod 0755 %{buildroot}%{_bindir}/%{name}
+chmod 0755 %{buildroot}%{_libdir}/lib%{name}.so
 
 %check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.rssguard.desktop
@@ -64,6 +65,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Sat Jun 20 17:07:20 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-2
+- Fix library perms
+
 * Fri Jun 19 20:44:52 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-1
 - Update to 3.6.3
 
