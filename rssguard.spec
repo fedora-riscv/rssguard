@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -40,6 +40,12 @@ sed -i 's/\r$//' README.md
 rm -rf src/qtsingleapplication
 
 %build
+# This package fails to build with LTO due to undefined symbols.  LTO
+# was disabled in OpenSuSE as well, but with no real explanation why
+# beyond the undefined symbols.  It really shold be investigated further.
+# Disable LTO
+%define _lto_cflags %{nil}
+
 mkdir build && cd build
 lrelease-qt5 ../build.pro
 %{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
@@ -65,6 +71,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Wed Jul 01 2020 Jeff Law <law@redhat.com> - 3.6.3-3
+- Disable LTO
+
 * Sat Jun 20 17:07:20 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-2
 - Fix library perms
 
