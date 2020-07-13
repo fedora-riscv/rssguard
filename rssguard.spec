@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.6.3
-Release:        3%{?dist}
+Version:        3.7.0
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -11,9 +11,8 @@ License:        GPLv3+ and BSD and AGPLv3
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         rssguard-3.6.3-fix_install_path.patch
-Patch1:         rssguard-3.6.3-unbundle_qtsinglecoreapplication.patch
-Patch2:         0001-Fix-238-build.patch
+Patch0:         rssguard-3.7.0-fix_install_path.patch
+Patch1:         rssguard-3.7.0-unbundle_qtsinglecoreapplication.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -40,20 +39,13 @@ sed -i 's/\r$//' README.md
 rm -rf src/qtsingleapplication
 
 %build
-# This package fails to build with LTO due to undefined symbols.  LTO
-# was disabled in OpenSuSE as well, but with no real explanation why
-# beyond the undefined symbols.  It really shold be investigated further.
-# Disable LTO
-%define _lto_cflags %{nil}
-
 mkdir build && cd build
 lrelease-qt5 ../build.pro
-%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
+%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib } CONFIG+=ltcg
 %make_build
 
 %install
-cd build
-%make_install INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot} -C build
 chmod 0755 %{buildroot}%{_bindir}/%{name}
 chmod 0755 %{buildroot}%{_libdir}/lib%{name}.so
 
@@ -71,6 +63,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Mon Jul 13 16:57:13 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.7.0-1
+- Update to 3.7.0 (#1856323)
+
 * Wed Jul 01 2020 Jeff Law <law@redhat.com> - 3.6.3-3
 - Disable LTO
 

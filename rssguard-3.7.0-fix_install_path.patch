@@ -1,7 +1,7 @@
-diff -up rssguard-3.6.3/pri/install.pri.orig rssguard-3.6.3/pri/install.pri
---- rssguard-3.6.3/pri/install.pri.orig	2020-06-03 08:35:36.000000000 +0200
-+++ rssguard-3.6.3/pri/install.pri	2020-06-19 22:44:59.747145601 +0200
-@@ -191,7 +191,7 @@ unix:!mac:!android {
+diff -up rssguard-3.7.0/pri/install.pri.orig rssguard-3.7.0/pri/install.pri
+--- rssguard-3.7.0/pri/install.pri.orig	2020-07-13 11:08:38.000000000 +0200
++++ rssguard-3.7.0/pri/install.pri	2020-07-13 17:12:46.622170920 +0200
+@@ -194,7 +194,7 @@ unix:!mac:!android {
    appdata.path = $$quote($$PREFIX/share/metainfo/)
  
    lib.files = $$OUT_PWD/../librssguard/librssguard.so
@@ -10,7 +10,7 @@ diff -up rssguard-3.6.3/pri/install.pri.orig rssguard-3.6.3/pri/install.pri
    lib.CONFIG = no_check_exist
  
    desktop_icon.files = ../../resources/graphics/$${TARGET}.png
-@@ -248,5 +248,4 @@ for(header, INSTALL_HEADERS) {
+@@ -251,5 +251,4 @@ for(header, INSTALL_HEADERS) {
  
    eval(headers_$${dirname(header)}.files += $$header)
    eval(headers_$${dirname(header)}.path = $$path)

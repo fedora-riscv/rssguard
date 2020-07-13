@@ -1,6 +1,6 @@
-diff -up rssguard-3.6.3/pri/install.pri.orig rssguard-3.6.3/pri/install.pri
---- rssguard-3.6.3/pri/install.pri.orig	2020-06-03 08:35:36.000000000 +0200
-+++ rssguard-3.6.3/pri/install.pri	2020-06-19 22:22:17.806565164 +0200
+diff -up rssguard-3.7.0/pri/install.pri.orig rssguard-3.7.0/pri/install.pri
+--- rssguard-3.7.0/pri/install.pri.orig	2020-07-13 11:08:38.000000000 +0200
++++ rssguard-3.7.0/pri/install.pri	2020-07-13 17:14:04.230079995 +0200
 @@ -113,10 +113,6 @@ INSTALL_HEADERS = \
  ../librssguard/network-web/urlinterceptor.h \
  ../librssguard/network-web/webfactory.h \
@@ -12,9 +12,9 @@ diff -up rssguard-3.6.3/pri/install.pri.orig rssguard-3.6.3/pri/install.pri
  ../librssguard/services/abstract/accountcheckmodel.h \
  ../librssguard/services/abstract/cacheforserviceroot.h \
  ../librssguard/services/abstract/category.h \
-diff -up rssguard-3.6.3/src/librssguard/librssguard.pro.orig rssguard-3.6.3/src/librssguard/librssguard.pro
---- rssguard-3.6.3/src/librssguard/librssguard.pro.orig	2020-06-03 08:35:36.000000000 +0200
-+++ rssguard-3.6.3/src/librssguard/librssguard.pro	2020-06-19 22:28:15.497946134 +0200
+diff -up rssguard-3.7.0/src/librssguard/librssguard.pro.orig rssguard-3.7.0/src/librssguard/librssguard.pro
+--- rssguard-3.7.0/src/librssguard/librssguard.pro.orig	2020-07-13 11:08:38.000000000 +0200
++++ rssguard-3.7.0/src/librssguard/librssguard.pro	2020-07-13 17:14:04.231079993 +0200
 @@ -23,7 +23,7 @@ message($$MSG_PREFIX: lrelease executabl
  include(../../pri/build_opts.pri)
  
@@ -24,7 +24,7 @@ diff -up rssguard-3.6.3/src/librssguard/librssguard.pro.orig rssguard-3.6.3/src/
  
  RESOURCES += ../../resources/sql.qrc \
               ../../resources/rssguard.qrc \
-@@ -114,10 +114,6 @@ HEADERS += core/feeddownloader.h \
+@@ -117,10 +117,6 @@ HEADERS += core/feeddownloader.h \
             network-web/oauth2service.h \
             network-web/silentnetworkaccessmanager.h \
             network-web/webfactory.h \
@@ -35,7 +35,7 @@ diff -up rssguard-3.6.3/src/librssguard/librssguard.pro.orig rssguard-3.6.3/src/
             services/abstract/accountcheckmodel.h \
             services/abstract/cacheforserviceroot.h \
             services/abstract/category.h \
-@@ -254,10 +250,6 @@ SOURCES += core/feeddownloader.cpp \
+@@ -262,10 +258,6 @@ SOURCES += core/feeddownloader.cpp \
             network-web/oauth2service.cpp \
             network-web/silentnetworkaccessmanager.cpp \
             network-web/webfactory.cpp \
@@ -46,15 +46,15 @@ diff -up rssguard-3.6.3/src/librssguard/librssguard.pro.orig rssguard-3.6.3/src/
             services/abstract/accountcheckmodel.cpp \
             services/abstract/cacheforserviceroot.cpp \
             services/abstract/category.cpp \
-diff -up rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp
---- rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp.orig	2020-06-03 08:35:36.000000000 +0200
-+++ rssguard-3.6.3/src/librssguard/miscellaneous/application.cpp	2020-06-19 22:35:32.574175465 +0200
-@@ -474,8 +474,6 @@ void Application::onAboutToQuit() {
+diff -up rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp
+--- rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp.orig	2020-07-13 11:08:38.000000000 +0200
++++ rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp	2020-07-13 17:14:04.232079992 +0200
+@@ -486,8 +486,6 @@ void Application::onAboutToQuit() {
  
    // Now, we can check if application should just quit or restart itself.
    if (m_shouldRestart) {
 -    finish();
 -    qDebug("Killing local peer connection to allow another instance to start.");
  
-     if (QProcess::startDetached(QString("\"") + QDir::toNativeSeparators(applicationFilePath()) + QString("\""))) {
+     if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), {})) {
        qDebug("New application instance was started.");
