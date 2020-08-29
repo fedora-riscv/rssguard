@@ -1,6 +1,6 @@
 Name:           rssguard
-Version:        3.7.0
-Release:        2%{?dist}
+Version:        3.7.1
+Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -11,8 +11,13 @@ License:        GPLv3+ and BSD and AGPLv3
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
+# Fix installation path
 Patch0:         rssguard-3.7.0-fix_install_path.patch
-Patch1:         rssguard-3.7.0-unbundle_qtsinglecoreapplication.patch
+# Unbundle qtsinglecoreapplication
+Patch1:         rssguard-3.7.1-unbundle_qtsinglecoreapplication.patch
+# https://github.com/martinrotter/rssguard/issues/270
+# https://github.com/martinrotter/rssguard/pull/271
+Patch2:         0001-Force-use-of-signed-char-in-mimesis.cpp.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -63,6 +68,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Sat Aug 29 14:38:25 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.7.1-1
+- Update to 3.7.1 (#1872522)
+
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.7.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 

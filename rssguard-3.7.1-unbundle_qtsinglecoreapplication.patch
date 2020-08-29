@@ -1,6 +1,6 @@
-diff -up rssguard-3.7.0/pri/install.pri.orig rssguard-3.7.0/pri/install.pri
---- rssguard-3.7.0/pri/install.pri.orig	2020-07-13 11:08:38.000000000 +0200
-+++ rssguard-3.7.0/pri/install.pri	2020-07-13 17:14:04.230079995 +0200
+diff -up rssguard-3.7.1/pri/install.pri.orig2 rssguard-3.7.1/pri/install.pri
+--- rssguard-3.7.1/pri/install.pri.orig2	2020-08-29 14:48:16.222723154 +0200
++++ rssguard-3.7.1/pri/install.pri	2020-08-29 14:48:38.681781337 +0200
 @@ -113,10 +113,6 @@ INSTALL_HEADERS = \
  ../librssguard/network-web/urlinterceptor.h \
  ../librssguard/network-web/webfactory.h \
@@ -12,9 +12,9 @@ diff -up rssguard-3.7.0/pri/install.pri.orig rssguard-3.7.0/pri/install.pri
  ../librssguard/services/abstract/accountcheckmodel.h \
  ../librssguard/services/abstract/cacheforserviceroot.h \
  ../librssguard/services/abstract/category.h \
-diff -up rssguard-3.7.0/src/librssguard/librssguard.pro.orig rssguard-3.7.0/src/librssguard/librssguard.pro
---- rssguard-3.7.0/src/librssguard/librssguard.pro.orig	2020-07-13 11:08:38.000000000 +0200
-+++ rssguard-3.7.0/src/librssguard/librssguard.pro	2020-07-13 17:14:04.231079993 +0200
+diff -up rssguard-3.7.1/src/librssguard/librssguard.pro.orig2 rssguard-3.7.1/src/librssguard/librssguard.pro
+--- rssguard-3.7.1/src/librssguard/librssguard.pro.orig2	2020-08-25 12:29:57.000000000 +0200
++++ rssguard-3.7.1/src/librssguard/librssguard.pro	2020-08-29 14:48:38.681781337 +0200
 @@ -23,7 +23,7 @@ message($$MSG_PREFIX: lrelease executabl
  include(../../pri/build_opts.pri)
  
@@ -24,7 +24,7 @@ diff -up rssguard-3.7.0/src/librssguard/librssguard.pro.orig rssguard-3.7.0/src/
  
  RESOURCES += ../../resources/sql.qrc \
               ../../resources/rssguard.qrc \
-@@ -117,10 +117,6 @@ HEADERS += core/feeddownloader.h \
+@@ -115,10 +115,6 @@ HEADERS += core/feeddownloader.h \
             network-web/oauth2service.h \
             network-web/silentnetworkaccessmanager.h \
             network-web/webfactory.h \
@@ -35,7 +35,7 @@ diff -up rssguard-3.7.0/src/librssguard/librssguard.pro.orig rssguard-3.7.0/src/
             services/abstract/accountcheckmodel.h \
             services/abstract/cacheforserviceroot.h \
             services/abstract/category.h \
-@@ -262,10 +258,6 @@ SOURCES += core/feeddownloader.cpp \
+@@ -257,10 +253,6 @@ SOURCES += core/feeddownloader.cpp \
             network-web/oauth2service.cpp \
             network-web/silentnetworkaccessmanager.cpp \
             network-web/webfactory.cpp \
@@ -46,15 +46,15 @@ diff -up rssguard-3.7.0/src/librssguard/librssguard.pro.orig rssguard-3.7.0/src/
             services/abstract/accountcheckmodel.cpp \
             services/abstract/cacheforserviceroot.cpp \
             services/abstract/category.cpp \
-diff -up rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp
---- rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp.orig	2020-07-13 11:08:38.000000000 +0200
-+++ rssguard-3.7.0/src/librssguard/miscellaneous/application.cpp	2020-07-13 17:14:04.232079992 +0200
-@@ -486,8 +486,6 @@ void Application::onAboutToQuit() {
+diff -up rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp.orig2 rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp
+--- rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp.orig2	2020-08-29 14:48:38.682781339 +0200
++++ rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp	2020-08-29 14:50:11.075020693 +0200
+@@ -479,8 +479,6 @@ void Application::onAboutToQuit() {
  
    // Now, we can check if application should just quit or restart itself.
    if (m_shouldRestart) {
 -    finish();
--    qDebug("Killing local peer connection to allow another instance to start.");
+-    qDebugNN << LOGSEC_CORE << "Killing local peer connection to allow another instance to start.";
  
      if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), {})) {
-       qDebug("New application instance was started.");
+       qDebugNN << LOGSEC_CORE << "New application instance was started.";
