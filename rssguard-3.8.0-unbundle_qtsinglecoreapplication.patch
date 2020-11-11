@@ -1,7 +1,7 @@
-diff -up rssguard-3.7.1/pri/install.pri.orig2 rssguard-3.7.1/pri/install.pri
---- rssguard-3.7.1/pri/install.pri.orig2	2020-08-29 14:48:16.222723154 +0200
-+++ rssguard-3.7.1/pri/install.pri	2020-08-29 14:48:38.681781337 +0200
-@@ -113,10 +113,6 @@ INSTALL_HEADERS = \
+diff -up rssguard-3.8.0/pri/install.pri.orig2 rssguard-3.8.0/pri/install.pri
+--- rssguard-3.8.0/pri/install.pri.orig2	2020-11-11 12:36:27.104551441 +0100
++++ rssguard-3.8.0/pri/install.pri	2020-11-11 12:37:35.500702201 +0100
+@@ -140,10 +140,6 @@ INSTALL_HEADERS = \
  ../librssguard/network-web/urlinterceptor.h \
  ../librssguard/network-web/webfactory.h \
  ../librssguard/network-web/webpage.h \
@@ -9,12 +9,12 @@ diff -up rssguard-3.7.1/pri/install.pri.orig2 rssguard-3.7.1/pri/install.pri
 -../librssguard/qtsingleapplication/qtlockedfile.h \
 -../librssguard/qtsingleapplication/qtsingleapplication.h \
 -../librssguard/qtsingleapplication/qtsinglecoreapplication.h \
+ ../librssguard/services/abstract/accountcheckmodel.cpp \
  ../librssguard/services/abstract/accountcheckmodel.h \
- ../librssguard/services/abstract/cacheforserviceroot.h \
- ../librssguard/services/abstract/category.h \
-diff -up rssguard-3.7.1/src/librssguard/librssguard.pro.orig2 rssguard-3.7.1/src/librssguard/librssguard.pro
---- rssguard-3.7.1/src/librssguard/librssguard.pro.orig2	2020-08-25 12:29:57.000000000 +0200
-+++ rssguard-3.7.1/src/librssguard/librssguard.pro	2020-08-29 14:48:38.681781337 +0200
+ ../librssguard/services/abstract/cacheforserviceroot.cpp \
+diff -up rssguard-3.8.0/src/librssguard/librssguard.pro.orig2 rssguard-3.8.0/src/librssguard/librssguard.pro
+--- rssguard-3.8.0/src/librssguard/librssguard.pro.orig2	2020-11-10 13:21:20.000000000 +0100
++++ rssguard-3.8.0/src/librssguard/librssguard.pro	2020-11-11 12:36:27.104551441 +0100
 @@ -23,7 +23,7 @@ message($$MSG_PREFIX: lrelease executabl
  include(../../pri/build_opts.pri)
  
@@ -23,8 +23,8 @@ diff -up rssguard-3.7.1/src/librssguard/librssguard.pro.orig2 rssguard-3.7.1/src
 +CONFIG += unversioned_libname unversioned_soname skip_target_version_ext qtsingleapplication
  
  RESOURCES += ../../resources/sql.qrc \
-              ../../resources/rssguard.qrc \
-@@ -115,10 +115,6 @@ HEADERS += core/feeddownloader.h \
+              ../../resources/rssguard.qrc
+@@ -122,10 +122,6 @@ HEADERS += core/feeddownloader.h \
             network-web/oauth2service.h \
             network-web/silentnetworkaccessmanager.h \
             network-web/webfactory.h \
@@ -35,7 +35,7 @@ diff -up rssguard-3.7.1/src/librssguard/librssguard.pro.orig2 rssguard-3.7.1/src
             services/abstract/accountcheckmodel.h \
             services/abstract/cacheforserviceroot.h \
             services/abstract/category.h \
-@@ -257,10 +253,6 @@ SOURCES += core/feeddownloader.cpp \
+@@ -273,10 +269,6 @@ SOURCES += core/feeddownloader.cpp \
             network-web/oauth2service.cpp \
             network-web/silentnetworkaccessmanager.cpp \
             network-web/webfactory.cpp \
@@ -46,10 +46,10 @@ diff -up rssguard-3.7.1/src/librssguard/librssguard.pro.orig2 rssguard-3.7.1/src
             services/abstract/accountcheckmodel.cpp \
             services/abstract/cacheforserviceroot.cpp \
             services/abstract/category.cpp \
-diff -up rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp.orig2 rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp
---- rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp.orig2	2020-08-29 14:48:38.682781339 +0200
-+++ rssguard-3.7.1/src/librssguard/miscellaneous/application.cpp	2020-08-29 14:50:11.075020693 +0200
-@@ -479,8 +479,6 @@ void Application::onAboutToQuit() {
+diff -up rssguard-3.8.0/src/librssguard/miscellaneous/application.cpp.orig2 rssguard-3.8.0/src/librssguard/miscellaneous/application.cpp
+--- rssguard-3.8.0/src/librssguard/miscellaneous/application.cpp.orig2	2020-11-11 12:36:27.105551444 +0100
++++ rssguard-3.8.0/src/librssguard/miscellaneous/application.cpp	2020-11-11 12:39:49.580997782 +0100
+@@ -511,8 +511,6 @@ void Application::onAboutToQuit() {
  
    // Now, we can check if application should just quit or restart itself.
    if (m_shouldRestart) {

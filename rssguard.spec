@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.7.1
+Version:        3.8.0
 Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
@@ -12,12 +12,9 @@ URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Fix installation path
-Patch0:         rssguard-3.7.0-fix_install_path.patch
+Patch0:         rssguard-3.8.0-fix_install_path.patch
 # Unbundle qtsinglecoreapplication
-Patch1:         rssguard-3.7.1-unbundle_qtsinglecoreapplication.patch
-# https://github.com/martinrotter/rssguard/issues/270
-# https://github.com/martinrotter/rssguard/pull/271
-Patch2:         0001-Force-use-of-signed-char-in-mimesis.cpp.patch
+Patch1:         rssguard-3.8.0-unbundle_qtsinglecoreapplication.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -68,6 +65,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Wed Nov 11 12:21:02 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.0-1
+- Update to 3.8.0
+- Close rhbz#1874625
+
 * Sat Aug 29 14:38:25 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.7.1-1
 - Update to 3.7.1 (#1872522)
 
