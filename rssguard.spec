@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.8.0
+Version:        3.8.3
 Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
@@ -65,6 +65,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Fri Dec 04 23:23:28 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.3-1
+- Update to 3.8.3
+- Close rhbz#1899877
+
 * Wed Nov 11 12:21:02 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.0-1
 - Update to 3.8.0
 - Close rhbz#1874625
