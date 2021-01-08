@@ -1,6 +1,6 @@
-diff -up rssguard-3.8.3/src/librssguard/librssguard.pro.orig rssguard-3.8.3/src/librssguard/librssguard.pro
---- rssguard-3.8.3/src/librssguard/librssguard.pro.orig	2020-11-30 08:15:34.000000000 +0100
-+++ rssguard-3.8.3/src/librssguard/librssguard.pro	2020-12-04 23:26:41.034609152 +0100
+diff -up rssguard-3.8.4/src/librssguard/librssguard.pro.orig rssguard-3.8.4/src/librssguard/librssguard.pro
+--- rssguard-3.8.4/src/librssguard/librssguard.pro.orig	2021-01-05 14:19:02.000000000 +0100
++++ rssguard-3.8.4/src/librssguard/librssguard.pro	2021-01-08 15:50:46.292334813 +0100
 @@ -23,7 +23,7 @@ message($$MSG_PREFIX: lrelease executabl
  include(../../pri/build_opts.pri)
  
@@ -10,7 +10,7 @@ diff -up rssguard-3.8.3/src/librssguard/librssguard.pro.orig rssguard-3.8.3/src/
  
  RESOURCES += ../../resources/sql.qrc \
               ../../resources/rssguard.qrc
-@@ -123,10 +123,6 @@ HEADERS += core/feeddownloader.h \
+@@ -124,10 +124,6 @@ HEADERS += core/feeddownloader.h \
             network-web/oauth2service.h \
             network-web/silentnetworkaccessmanager.h \
             network-web/webfactory.h \
@@ -21,7 +21,7 @@ diff -up rssguard-3.8.3/src/librssguard/librssguard.pro.orig rssguard-3.8.3/src/
             services/abstract/accountcheckmodel.h \
             services/abstract/cacheforserviceroot.h \
             services/abstract/category.h \
-@@ -274,10 +270,6 @@ SOURCES += core/feeddownloader.cpp \
+@@ -279,10 +275,6 @@ SOURCES += core/feeddownloader.cpp \
             network-web/oauth2service.cpp \
             network-web/silentnetworkaccessmanager.cpp \
             network-web/webfactory.cpp \
@@ -32,10 +32,10 @@ diff -up rssguard-3.8.3/src/librssguard/librssguard.pro.orig rssguard-3.8.3/src/
             services/abstract/accountcheckmodel.cpp \
             services/abstract/cacheforserviceroot.cpp \
             services/abstract/category.cpp \
-diff -up rssguard-3.8.3/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.8.3/src/librssguard/miscellaneous/application.cpp
---- rssguard-3.8.3/src/librssguard/miscellaneous/application.cpp.orig	2020-11-30 08:15:34.000000000 +0100
-+++ rssguard-3.8.3/src/librssguard/miscellaneous/application.cpp	2020-12-04 23:26:41.035609132 +0100
-@@ -521,8 +521,6 @@ void Application::onAboutToQuit() {
+diff -up rssguard-3.8.4/src/librssguard/miscellaneous/application.cpp.orig rssguard-3.8.4/src/librssguard/miscellaneous/application.cpp
+--- rssguard-3.8.4/src/librssguard/miscellaneous/application.cpp.orig	2021-01-05 14:19:02.000000000 +0100
++++ rssguard-3.8.4/src/librssguard/miscellaneous/application.cpp	2021-01-08 15:50:46.292334813 +0100
+@@ -532,8 +532,6 @@ void Application::onAboutToQuit() {
  
    // Now, we can check if application should just quit or restart itself.
    if (m_shouldRestart) {

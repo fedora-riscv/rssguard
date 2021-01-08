@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.8.3
+Version:        3.8.4
 Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
@@ -14,7 +14,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 # Fix installation path
 Patch0:         rssguard-3.8.0-fix_install_path.patch
 # Unbundle qtsinglecoreapplication
-Patch1:         rssguard-3.8.0-unbundle_qtsinglecoreapplication.patch
+Patch1:         rssguard-3.8.4-unbundle_qtsinglecoreapplication.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -65,6 +65,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Fri Jan  8 15:13:47 CET 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.4-1
+- Update to 3.8.4
+- Close: rhbz#1913107
+
 * Fri Dec 04 23:23:28 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.3-1
 - Update to 3.8.3
 - Close rhbz#1899877
