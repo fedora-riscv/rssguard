@@ -19,6 +19,7 @@ Patch1:         rssguard-3.8.4-unbundle_qtsinglecoreapplication.patch
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
 
+BuildRequires: make
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5WebEngine)
