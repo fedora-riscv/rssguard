@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.9.1
+Version:        3.9.2
 Release:        1%{?dist}
 Summary:        Simple yet powerful feed reader
 
@@ -66,6 +66,10 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Mon May 24 16:10:08 CEST 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.2-1
+- Update to 3.9.2
+- Close: rhbz#1948625
+
 * Wed Apr  7 15:55:39 CEST 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.1-1
 - Update to 3.9.1
 - Close: rhbz#1946695
