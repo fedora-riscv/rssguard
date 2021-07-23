@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.9.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -66,6 +66,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
+* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.9.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
+
 * Mon May 24 16:10:08 CEST 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.2-1
 - Update to 3.9.2
 - Close: rhbz#1948625
