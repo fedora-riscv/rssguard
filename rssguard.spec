@@ -1,5 +1,5 @@
 Name:           rssguard
-Version:        3.9.2
+Version:        4.0.4
 Release:        %autorelease
 Summary:        Simple yet powerful feed reader
 
@@ -12,9 +12,7 @@ URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Fix installation path
-Patch0:         rssguard-3.8.0-fix_install_path.patch
-# Unbundle qtsinglecoreapplication
-Patch1:         rssguard-3.8.4-unbundle_qtsinglecoreapplication.patch
+Patch0:         rssguard-4.0.4-fix_install_path.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -22,8 +20,8 @@ ExclusiveArch:  %{qt5_qtwebengine_arches}
 BuildRequires:  make
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5WebEngine)
-BuildRequires:  qtsingleapplication-qt5-devel
 BuildRequires:  qt5-linguist
 BuildRequires:  libappstream-glib
 BuildRequires:  desktop-file-utils
@@ -36,15 +34,12 @@ using Qt framework which supports online feed synchronization.
 %prep
 %autosetup -p1 -n %{name}-%{version}
 
-find src -type f | xargs chmod 0644
-chmod 0644 resources/desktop/com.github.rssguard.appdata.xml
 sed -i 's/\r$//' README.md
-rm -rf src/qtsingleapplication
 
 %build
 mkdir build && cd build
 lrelease-qt5 ../build.pro
-%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib } CONFIG+=ltcg
+%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
 %make_build
 
 %install
