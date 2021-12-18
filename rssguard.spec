@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        3.9.2
-Release:        2%{?dist}
+Release:        %autorelease
 Summary:        Simple yet powerful feed reader
 
 # GPLv3+: main program
@@ -66,93 +66,4 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %{_datadir}/metainfo/com.github.rssguard.appdata.xml
 
 %changelog
-* Fri Jul 23 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.9.2-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
-
-* Mon May 24 16:10:08 CEST 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.2-1
-- Update to 3.9.2
-- Close: rhbz#1948625
-
-* Wed Apr  7 15:55:39 CEST 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.1-1
-- Update to 3.9.1
-- Close: rhbz#1946695
-
-* Fri Mar  5 11:56:40 CET 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.9.0-1
-- Update to 3.9.0
-- Close: rhbz#1932738
-
-* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.8.4-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
-
-* Fri Jan  8 15:13:47 CET 2021 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.4-1
-- Update to 3.8.4
-- Close: rhbz#1913107
-
-* Fri Dec 04 23:23:28 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.3-1
-- Update to 3.8.3
-- Close rhbz#1899877
-
-* Wed Nov 11 12:21:02 CET 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.8.0-1
-- Update to 3.8.0
-- Close rhbz#1874625
-
-* Sat Aug 29 14:38:25 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.7.1-1
-- Update to 3.7.1 (#1872522)
-
-* Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.7.0-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
-* Mon Jul 13 16:57:13 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.7.0-1
-- Update to 3.7.0 (#1856323)
-
-* Wed Jul 01 2020 Jeff Law <law@redhat.com> - 3.6.3-3
-- Disable LTO
-
-* Sat Jun 20 17:07:20 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-2
-- Fix library perms
-
-* Fri Jun 19 20:44:52 CEST 2020 Robert-André Mauchin <zebob.m@gmail.com> - 3.6.3-1
-- Update to 3.6.3
-
-* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.9-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
-
-* Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.9-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
-
-* Sun Jun 09 23:44:15 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.9-1
-- Release 3.5.9
-
-* Fri May 31 20:03:55 CEST 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.8-1
-- Release 3.5.8
-
-* Thu Apr 04 11:14:04 CET 2019 Robert-André Mauchin <zebob.m@gmail.com> - 3.5.7-1
-- Release 3.5.7
-
-* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.6-4
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
-
-* Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.6-3
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
-
-* Thu Mar 08 2018 Rex Dieter <rdieter@fedoraproject.org> - 3.5.6-2
-- better Qt dep
-
-* Mon Feb 26 2018 Robert-André Mauchin <zebob.m@gmail.com> 3.5.6-1
-- Upstream release 3.5.6
-
-* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 3.5.5-2
-- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
-
-* Thu Dec 07 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.5-1
-- Upstream release 3.5.5
-
-* Wed Nov 01 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.4-3
-- Unbundle qtsinglecoreapplication
-- Correct licensing
-
-* Tue Oct 31 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.4-2
-- Added ExclusiveArch
-
-* Tue Oct 31 2017 Robert-André Mauchin <zebob.m@gmail.com> 3.5.4-1
-- First RPM release
+%autochangelog
