@@ -1,3 +1,5 @@
+%define _lto_cflags %{nil}
+
 Name:           rssguard
 Version:        4.0.4
 Release:        %autorelease
@@ -33,13 +35,11 @@ using Qt framework which supports online feed synchronization.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
-
 sed -i 's/\r$//' README.md
 
 %build
 mkdir build && cd build
-lrelease-qt5 ../build.pro
-%{qmake_qt5} ../build.pro -r PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
+%{qmake_qt5} ../build.pro -r CONFIG+=release PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
 %make_build
 
 %install
