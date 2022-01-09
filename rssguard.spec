@@ -1,7 +1,7 @@
 %define _lto_cflags %{nil}
 
 Name:           rssguard
-Version:        4.0.4
+Version:        4.1.1
 Release:        %autorelease
 Summary:        Simple yet powerful feed reader
 
