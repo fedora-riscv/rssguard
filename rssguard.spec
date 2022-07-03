@@ -1,20 +1,13 @@
-%define _lto_cflags %{nil}
-
 Name:           rssguard
-Version:        4.1.1
+Version:        4.2.3
 Release:        %autorelease
 Summary:        Simple yet powerful feed reader
 
-# GPLv3+: main program
-# BSD: src/dynamic-shortcuts, src/miscellaneous/simplecrypt,
-#      src/network-web/googlesuggest
-# AGPLv3: src/network-web/oauth2service
-License:        GPLv3+ and BSD and AGPLv3
+# GPL-3.0-or-later: main program
+# BSD-3-Clause:  src/network-web/librssguard/googlesuggest.*
+License:        GPL-3.0-or-later AND BSD-3-Clause
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Fix installation path
-Patch0:         rssguard-4.0.4-fix_install_path.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
@@ -38,14 +31,11 @@ using Qt framework which supports online feed synchronization.
 sed -i 's/\r$//' README.md
 
 %build
-mkdir build && cd build
-%{qmake_qt5} ../build.pro -r CONFIG+=release PREFIX=%{_prefix} LIB_INSTALL_DIR=%{_lib}
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install INSTALL_ROOT=%{buildroot} -C build
-chmod 0755 %{buildroot}%{_bindir}/%{name}
-chmod 0755 %{buildroot}%{_libdir}/lib%{name}.so
+%cmake_install
 
 %check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/com.github.rssguard.desktop
@@ -55,6 +45,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/com.gith
 %doc README.md
 %license LICENSE.md
 %{_bindir}/%{name}
+%{_includedir}/lib%{name}/
 %{_libdir}/lib%{name}.so
 %{_datadir}/applications/com.github.rssguard.desktop
 %{_datadir}/icons/hicolor/*/apps/rssguard.png
