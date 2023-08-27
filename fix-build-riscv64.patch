@@ -1,0 +1,12 @@
+diff --git a/src/librssguard/3rd-party/mimesis/quoted-printable.hpp b/src/librssguard/3rd-party/mimesis/quoted-printable.hpp
+index 54c054a..52c7225 100644
+--- a/src/librssguard/3rd-party/mimesis/quoted-printable.hpp
++++ b/src/librssguard/3rd-party/mimesis/quoted-printable.hpp
+@@ -19,6 +19,7 @@
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <cstdint>
+ #include <string>
+ #include <string_view>
+ 

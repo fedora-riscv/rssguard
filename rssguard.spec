@@ -1,6 +1,6 @@
 Name:           rssguard
 Version:        4.2.7
-Release:        %autorelease
+Release:        %autorelease -e rv64
 Summary:        Simple yet powerful feed reader
 
 # GPL-3.0-or-later: main program
@@ -8,6 +8,8 @@ Summary:        Simple yet powerful feed reader
 License:        GPL-3.0-or-later AND BSD-3-Clause
 URL:            https://github.com/martinrotter/rssguard
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+
+Patch100:       fix-build-riscv64.patch
 
 # Qt5WebEngine is only available on those architectures
 ExclusiveArch:  %{qt5_qtwebengine_arches}
